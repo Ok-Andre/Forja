@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Swift build artifacts
+.build/
+
+# Built Mac Application
+*.app
