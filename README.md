@@ -1,4 +1,4 @@
-# 🔨 FORJA — Fitness & Habits Tracker for macOS
+# FORJA — Fitness & Habits Tracker for macOS
 
 ![macOS](https://img.shields.io/badge/macOS-13.0%2B-000000?style=for-the-badge&logo=apple&logoColor=white)
 ![Swift](https://img.shields.io/badge/Swift-5.9-FA7343?style=for-the-badge&logo=swift&logoColor=white)
@@ -15,18 +15,18 @@ Combina la potencia de **SwiftUI & WebKit** en la capa nativa de macOS con una i
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-- 🏋️‍♂️ **Registro de Entrenamientos y Series:** Anota ejercicios, repeticiones y peso cargado en cada sesión.
-- 🔥 **Seguimiento de Hábitos (Rachas & Heatmap):** Monitorea tus hábitos clave (sueño de 8h, hidratación, proteína, pasos) con un mapa de calor semanal y contador de días seguidos (*streaks*).
-- 📋 **Gestor de Rutinas:** Crea y organiza tus rutinas de entrenamiento personalizadas (ej. *Push/Pull/Legs*, *Upper/Lower*).
-- ⚖️ **Control de Peso Corporal:** Registra tu peso diario o semanal y observa tu evolución.
-- ☁️ **Sincronización Opcional con Firebase:** Sincroniza tu progreso entre varias Macs o compártelo con tu compañero de entrenamiento.
-- ⚡ **Compilación Ultra-Rápida sin Xcode:** No requiere instalar los ~15 GB de Xcode completo. Se compila en segundos desde la Terminal usando solo las **Apple Command Line Tools**.
+- **Registro de Entrenamientos y Series:** Anota ejercicios, repeticiones y peso cargado en cada sesión.
+- **Seguimiento de Hábitos (Rachas & Heatmap):** Monitorea tus hábitos clave (sueño de 8h, hidratación, proteína, pasos) con un mapa de calor semanal y contador de días seguidos (*streaks*).
+- **Gestor de Rutinas:** Crea y organiza tus rutinas de entrenamiento personalizadas (ej. *Push/Pull/Legs*, *Upper/Lower*).
+- **Control de Peso Corporal:** Registra tu peso diario o semanal y observa tu evolución.
+- **Sincronización Opcional con Firebase:** Sincroniza tu progreso entre varias Macs o compártelo con tu compañero de entrenamiento.
+- **Compilación Ultra-Rápida sin Xcode:** No requiere instalar los ~15 GB de Xcode completo. Se compila en segundos desde la Terminal usando solo las **Apple Command Line Tools**.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 | Categoría | Tecnología / Herramienta | Descripción |
 | :--- | :--- | :--- |
@@ -38,7 +38,7 @@ Combina la potencia de **SwiftUI & WebKit** en la capa nativa de macOS con una i
 
 ---
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 Forja/
@@ -59,7 +59,7 @@ Forja/
 
 ---
 
-## 🚀 Instalación y Compilación
+## Instalación y Compilación
 
 ### 1. Prerrequisitos
 Solo necesitas las **Command Line Tools** de Apple (no requiere Xcode completo):
@@ -91,9 +91,9 @@ O haz doble clic en `Forja.app` desde el Finder.
 
 ---
 
-## 🤝 Contribuciones y Créditos
+## Contribuciones y Créditos
 
 Desarrollado para quienes buscan una herramienta liviana, estética y sin fricción para forjar su mejor versión diaria en macOS.
 
 ---
-*Desarrollado con Swift, WebKit y HTML5.* 🔨
+*Desarrollado con Swift, WebKit y HTML5.*
