@@ -106,9 +106,19 @@
   .habit-info{ display:flex; align-items:center; gap:10px; flex:1; }
   .habit-name{ font-size:14px; font-weight:500; }
   .streak{ font-family: var(--font-mono); font-size:11px; color: var(--gold); }
-  .heat{ display:flex; gap:3px; margin-top:4px; }
+  .heat{ display:flex; gap:3px; margin-top:4px; flex-wrap:wrap; }
   .heat span{ width:8px; height:8px; border-radius:2px; background: var(--bg-elevated); border:1px solid var(--border); }
   .heat span.on{ background: var(--gold); border-color: var(--gold); }
+  .heat30 span{ width:9px; height:9px; }
+  .bar-chart{ height:130px; }
+  .exercise-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+  .exercise-box{
+    background: var(--bg-card); border:1px solid var(--border); border-radius:12px;
+    padding:14px 6px; text-align:center; cursor:pointer;
+  }
+  .exercise-box.selected{ border-color: var(--accent); background: var(--accent-dim); }
+  .exercise-box .w{ font-family: var(--font-mono); font-weight:700; font-size:19px; color: var(--accent); }
+  .exercise-box .n{ font-size:10.5px; color: var(--text-dim); margin-top:4px; line-height:1.25; }
   .pr-box{ text-align:center; padding: 18px 0 10px; }
   .pr-label{ font-size:11px; letter-spacing:2px; color: var(--text-dim); text-transform:uppercase; }
   .pr-value{ font-family: var(--font-mono); font-weight:700; font-size:44px; color: var(--accent); line-height:1.1; }
@@ -196,34 +206,6 @@
   </nav>
 </div>
 
-<script>
-/* ---------- Reemplazo de window.storage usando localStorage ----------
-   Todo queda guardado únicamente en esta Mac, dentro de la propia app.
-   No hay sincronización con otro dispositivo. */
-window.storage = {
-  async get(key, shared=false){
-    const raw = localStorage.getItem(key);
-    if(raw === null) throw new Error('Clave no encontrada: ' + key);
-    return { key, value: raw, shared: !!shared };
-  },
-  async set(key, value, shared=false){
-    localStorage.setItem(key, value);
-    return { key, value, shared: !!shared };
-  },
-  async delete(key, shared=false){
-    localStorage.removeItem(key);
-    return { key, deleted: true, shared: !!shared };
-  },
-  async list(prefix='', shared=false){
-    const keys = [];
-    for(let i=0;i<localStorage.length;i++){
-      const k = localStorage.key(i);
-      if(!prefix || k.startsWith(prefix)) keys.push(k);
-    }
-    return { keys, prefix, shared: !!shared };
-  }
-};
-</script>
 <script>
 let state = { routines: [], exercises: [], logs: {}, habits: [], habitLogs: {}, bodyWeightLogs: {}, seeded: false, profile: { name: '' } };
 let currentTab = 'hoy';
@@ -533,28 +515,67 @@ function toggleHabit(habitId){
   saveState(); render();
 }
 function renderHabitos(){
-  const rows = state.habits.map(h => {
+  const key = todayKey();
+
+  let checkSection;
+  if(state.habits.length === 0){
+    checkSection = '<div class="card"><p class="empty">Agregá hábitos que quieras trackear día a día: proteína, sueño 7.5-9h, agua, pasos...</p></div>';
+  } else {
+    const rows = state.habits.map(h => {
+      const done = (state.habitLogs[key] || []).includes(h.id);
+      const streak = computeStreak(h.id);
+      return `
+        <div class="habit-row">
+          <div class="habit-info">
+            <button class="habit-check ${done?'done':''}" onclick="toggleHabit('${h.id}')">${done?'✓':''}</button>
+            <span class="habit-name">${escapeHtml(h.name)}</span>
+          </div>
+          <span class="streak">${streak > 0 ? streak + ' 🔥' : ''}</span>
+        </div>`;
+    }).join('');
+    checkSection = `<div class="card"><h3>Marcar hoy</h3>${rows}</div>`;
+  }
+
+  let overallChart = '';
+  if(state.habits.length > 0){
+    const days = Array.from({length:14}).map((_,i) => dateKeyOffset(13-i));
+    const items = days.map(d => {
+      const doneCount = (state.habitLogs[d] || []).filter(id => state.habits.some(h => h.id === id)).length;
+      const pct = Math.round((doneCount / state.habits.length) * 100);
+      return { label: dayNum(d), value: pct };
+    });
+    overallChart = `
+      <div class="card section-gap">
+        <h3>Cumplimiento general · últimos 14 días</h3>
+        ${renderBarChart(items, { max: 100 })}
+      </div>`;
+  }
+
+  const habitCards = state.habits.map(h => {
     const streak = computeStreak(h.id);
-    const heat = Array.from({length:7}).map((_,i) => {
-      const key = dateKeyOffset(6-i);
-      const on = (state.habitLogs[key] || []).includes(h.id);
-      return `<span class="${on?'on':''}"></span>`;
+    const days30 = Array.from({length:30}).map((_,i) => dateKeyOffset(29-i));
+    const cells = days30.map(d => {
+      const on = (state.habitLogs[d] || []).includes(h.id);
+      return `<span class="${on?'on':''}" title="${d}"></span>`;
     }).join('');
     return `
-      <div class="card">
+      <div class="card section-gap">
         <div class="row" style="justify-content:space-between;">
           <div>
             <div class="habit-name">${escapeHtml(h.name)}</div>
             <div class="streak">${streak > 0 ? streak + ' días seguidos 🔥' : 'Sin racha activa'}</div>
-            <div class="heat">${heat}</div>
           </div>
           <button class="btn-icon" onclick="deleteHabit('${h.id}')">✕</button>
         </div>
+        <div class="heat heat30 gap-top">${cells}</div>
       </div>`;
   }).join('');
+
   return `
     <h2>Hábitos</h2>
-    ${state.habits.length===0 ? '<div class="card"><p class="empty">Agregá hábitos que quieras trackear día a día: proteína, sueño 7.5-9h, agua, pasos...</p></div>' : rows}
+    ${checkSection}
+    ${overallChart}
+    ${habitCards}
     <div class="card section-gap">
       <h3>Nuevo hábito</h3>
       <div class="row">
@@ -562,6 +583,27 @@ function renderHabitos(){
         <button class="btn" onclick="addHabit()">Agregar</button>
       </div>
     </div>`;
+}
+function dayNum(key){
+  return String(parseInt(key.split('-')[2], 10));
+}
+function renderBarChart(items, opts={}){
+  const w = 600, h = 140, pad = 20;
+  const maxVal = opts.max || Math.max(...items.map(i => i.value), 1);
+  const n = items.length;
+  const barW = (w - 2*pad) / n;
+  const bars = items.map((it, i) => {
+    const bh = maxVal > 0 ? (it.value / maxVal) * (h - 2*pad - 16) : 0;
+    const x = pad + i*barW + barW*0.18;
+    const y = h - pad - bh - 14;
+    const bw = barW * 0.64;
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(bh,0).toFixed(1)}" rx="3" fill="var(--accent)"/>`;
+  }).join('');
+  const labels = items.map((it, i) => {
+    const x = pad + i*barW + barW/2;
+    return `<text x="${x.toFixed(1)}" y="${h-6}" font-size="8" fill="var(--text-dim)" text-anchor="middle">${escapeHtml(String(it.label))}</text>`;
+  }).join('');
+  return `<svg viewBox="0 0 ${w} ${h}" class="chart bar-chart" preserveAspectRatio="none">${bars}${labels}</svg>`;
 }
 function addHabit(){
   const input = document.getElementById('newHabitName');
@@ -650,7 +692,18 @@ function renderProgreso(){
   if(!progressExerciseId || !state.exercises.find(e => e.id === progressExerciseId)){
     progressExerciseId = state.exercises[0].id;
   }
-  const ddOptions = state.exercises.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(e => ({ value: e.id, label: e.name }));
+
+  const sortedEx = state.exercises.slice().sort((a,b) => a.name.localeCompare(b.name));
+  const gridBoxes = sortedEx.map(ex => {
+    const last = findLastSetForExercise(ex.id);
+    const w = last ? last.weight + ' kg' : '—';
+    const sel = ex.id === progressExerciseId ? 'selected' : '';
+    return `
+      <div class="exercise-box ${sel}" onclick="selectProgressExercise('${ex.id}')">
+        <div class="w">${w}</div>
+        <div class="n">${escapeHtml(ex.name)}</div>
+      </div>`;
+  }).join('');
 
   const sessions = [];
   Object.keys(state.logs).sort().forEach(date => {
@@ -678,8 +731,8 @@ function renderProgreso(){
 
   return `
     <h2>Progreso</h2>
-    <div class="card">
-      ${buildDropdown('exercise-progress', ddOptions, progressExerciseId || '', 'Elegí un ejercicio', 'selectProgressExercise')}
+    <div class="exercise-grid">${gridBoxes}</div>
+    <div class="card section-gap">
       ${prBlock}
       ${chartBlock}
     </div>
