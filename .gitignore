@@ -3,6 +3,9 @@
 
 # Swift build artifacts
 .build/
+.build-*/
+*.zip
 
 # Built Mac Application
 *.app
+

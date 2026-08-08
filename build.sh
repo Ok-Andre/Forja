@@ -3,17 +3,38 @@ set -e
 
 APP_NAME="Forja"
 BUNDLE_ID="com.tuusuario.forja"
+MACOS_MIN="13.0"
 
-echo "-> Compilando..."
-swift build -c release
+TARGET_ARM="arm64-apple-macosx${MACOS_MIN}"
+TARGET_X86="x86_64-apple-macosx${MACOS_MIN}"
 
-BIN_PATH=".build/release/${APP_NAME}"
-RES_BUNDLE=".build/release/${APP_NAME}_${APP_NAME}.bundle"
+echo "-> Compilando para Apple Silicon (arm64)..."
+swift build -c release --scratch-path .build-arm64 \
+  -Xswiftc -target -Xswiftc "$TARGET_ARM" \
+  -Xcc -target -Xcc "$TARGET_ARM"
 
-if [ ! -f "$BIN_PATH" ]; then
-  echo "No se encontró el binario compilado en $BIN_PATH"
+echo "-> Compilando para Intel (x86_64)..."
+swift build -c release --scratch-path .build-x86_64 \
+  -Xswiftc -target -Xswiftc "$TARGET_X86" \
+  -Xcc -target -Xcc "$TARGET_X86"
+
+ARM_BIN=".build-arm64/release/${APP_NAME}"
+X86_BIN=".build-x86_64/release/${APP_NAME}"
+
+if [ ! -f "$ARM_BIN" ] || [ ! -f "$X86_BIN" ]; then
+  echo "No se generaron los dos binarios. Revisá los errores de arriba."
   exit 1
 fi
+
+echo "-> Combinando en un binario universal..."
+mkdir -p .build-universal
+lipo -create "$ARM_BIN" "$X86_BIN" -output ".build-universal/${APP_NAME}"
+
+BIN_PATH=".build-universal/${APP_NAME}"
+RES_BUNDLE=".build-arm64/release/${APP_NAME}_${APP_NAME}.bundle"
+
+echo "-> Verificando arquitecturas del binario:"
+lipo -info "$BIN_PATH"
 
 echo "-> Armando el ícono (.icns)..."
 if [ -d "forja.iconset" ]; then
@@ -47,7 +68,7 @@ cat > "${APP_NAME}.app/Contents/Info.plist" <<PLIST
     <key>CFBundleShortVersionString</key><string>1.0</string>
     <key>CFBundleVersion</key><string>1</string>
     <key>CFBundleIconFile</key><string>AppIcon</string>
-    <key>LSMinimumSystemVersion</key><string>13.0</string>
+    <key>LSMinimumSystemVersion</key><string>${MACOS_MIN}</string>
     <key>NSHighResolutionCapable</key><true/>
 </dict>
 </plist>
@@ -57,5 +78,5 @@ echo "-> Firmando (ad-hoc)..."
 codesign --force --deep -s - "${APP_NAME}.app"
 
 echo ""
-echo "Listo: ${APP_NAME}.app"
+echo "Listo: ${APP_NAME}.app (universal: arm64 + x86_64)"
 echo "Abrilo con: open ${APP_NAME}.app"
