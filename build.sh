@@ -18,20 +18,31 @@ swift build -c release --scratch-path .build-x86_64 \
   -Xswiftc -target -Xswiftc "$TARGET_X86" \
   -Xcc -target -Xcc "$TARGET_X86"
 
-ARM_BIN=".build-arm64/release/${APP_NAME}"
-X86_BIN=".build-x86_64/release/${APP_NAME}"
+echo "-> Buscando los binarios compilados..."
+ARM_BIN=$(find .build-arm64 -type f -name "${APP_NAME}" -perm +111 2>/dev/null | grep "/release/${APP_NAME}$" | head -n1)
+X86_BIN=$(find .build-x86_64 -type f -name "${APP_NAME}" -perm +111 2>/dev/null | grep "/release/${APP_NAME}$" | head -n1)
 
-if [ ! -f "$ARM_BIN" ] || [ ! -f "$X86_BIN" ]; then
-  echo "No se generaron los dos binarios. Revisá los errores de arriba."
+if [ -z "$ARM_BIN" ] || [ -z "$X86_BIN" ]; then
+  echo "No se encontraron los binarios compilados. Revisá los errores de arriba."
+  echo "arm64: ${ARM_BIN:-<no encontrado>}"
+  echo "x86_64: ${X86_BIN:-<no encontrado>}"
   exit 1
 fi
+echo "   arm64:  $ARM_BIN"
+echo "   x86_64: $X86_BIN"
+
+echo "-> Buscando el paquete de recursos (bundle)..."
+RES_BUNDLE=$(find .build-arm64 .build-x86_64 -type d -name "${APP_NAME}_${APP_NAME}.bundle" 2>/dev/null | grep "/release/" | head -n1)
+if [ -z "$RES_BUNDLE" ]; then
+  echo "No se encontró el paquete de recursos ${APP_NAME}_${APP_NAME}.bundle"
+  exit 1
+fi
+echo "   bundle: $RES_BUNDLE"
 
 echo "-> Combinando en un binario universal..."
 mkdir -p .build-universal
 lipo -create "$ARM_BIN" "$X86_BIN" -output ".build-universal/${APP_NAME}"
-
 BIN_PATH=".build-universal/${APP_NAME}"
-RES_BUNDLE=".build-arm64/release/${APP_NAME}_${APP_NAME}.bundle"
 
 echo "-> Verificando arquitecturas del binario:"
 lipo -info "$BIN_PATH"
@@ -48,9 +59,10 @@ mkdir -p "${APP_NAME}.app/Contents/Resources"
 
 cp "$BIN_PATH" "${APP_NAME}.app/Contents/MacOS/${APP_NAME}"
 
-if [ -d "$RES_BUNDLE" ]; then
-  cp -r "$RES_BUNDLE" "${APP_NAME}.app/Contents/Resources/"
-fi
+# Se copia en los dos lugares donde el accessor generado por SwiftPM puede
+# llegar a buscarlo, para cubrir cualquiera de los dos casos.
+cp -r "$RES_BUNDLE" "${APP_NAME}.app/Contents/Resources/"
+cp -r "$RES_BUNDLE" "${APP_NAME}.app/"
 
 if [ -f "AppIcon.icns" ]; then
   cp "AppIcon.icns" "${APP_NAME}.app/Contents/Resources/AppIcon.icns"
