@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		654BDEBA302BAC1C00650E43 /* StorageBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BDEB9302BAC1C00650E43 /* StorageBridge.swift */; };
+		654BDEBB302BAC1C00650E43 /* StorageBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BDEB9302BAC1C00650E43 /* StorageBridge.swift */; };
+		654BDEBE302BBC9500650E43 /* forja.html in Resources */ = {isa = PBXBuildFile; fileRef = 654BDEBD302BBC9500650E43 /* forja.html */; };
+		654BDEBF302BBC9500650E43 /* forja.html in Resources */ = {isa = PBXBuildFile; fileRef = 654BDEBD302BBC9500650E43 /* forja.html */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		65694CE7302A3A1E009B9A96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,12 +28,31 @@
 			remoteGlobalIDString = 65694CD7302A3A15009B9A96;
 			remoteInfo = Forja;
 		};
+		65694D2F302AB915009B9A96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65694CD0302A3A15009B9A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65694D21302AB90E009B9A96;
+			remoteInfo = ForjaiOS;
+		};
+		65694D39302AB915009B9A96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65694CD0302A3A15009B9A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65694D21302AB90E009B9A96;
+			remoteInfo = ForjaiOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		654BDEB9302BAC1C00650E43 /* StorageBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBridge.swift; sourceTree = "<group>"; };
+		654BDEBD302BBC9500650E43 /* forja.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = forja.html; sourceTree = "<group>"; };
 		65694CD8302A3A15009B9A96 /* Forja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65694CE6302A3A1E009B9A96 /* ForjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65694CF0302A3A1F009B9A96 /* ForjaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForjaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65694D22302AB90E009B9A96 /* ForjaiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForjaiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65694D2E302AB915009B9A96 /* ForjaiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForjaiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65694D38302AB915009B9A96 /* ForjaiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForjaiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +69,21 @@
 		65694CF3302A3A1F009B9A96 /* ForjaUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ForjaUITests;
+			sourceTree = "<group>";
+		};
+		65694D23302AB90E009B9A96 /* ForjaiOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ForjaiOS;
+			sourceTree = "<group>";
+		};
+		65694D31302AB915009B9A96 /* ForjaiOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ForjaiOSTests;
+			sourceTree = "<group>";
+		};
+		65694D3B302AB915009B9A96 /* ForjaiOSUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ForjaiOSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,16 +110,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65694D1F302AB90E009B9A96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D2B302AB915009B9A96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D35302AB915009B9A96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		65694CCF302A3A15009B9A96 = {
 			isa = PBXGroup;
 			children = (
+				65694D0D302A3BBF009B9A96 /* Resources */,
 				65694CDA302A3A15009B9A96 /* Forja */,
 				65694CE9302A3A1E009B9A96 /* ForjaTests */,
 				65694CF3302A3A1F009B9A96 /* ForjaUITests */,
+				65694D23302AB90E009B9A96 /* ForjaiOS */,
+				65694D31302AB915009B9A96 /* ForjaiOSTests */,
+				65694D3B302AB915009B9A96 /* ForjaiOSUITests */,
 				65694CD9302A3A15009B9A96 /* Products */,
+				654BDEB9302BAC1C00650E43 /* StorageBridge.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,8 +155,19 @@
 				65694CD8302A3A15009B9A96 /* Forja.app */,
 				65694CE6302A3A1E009B9A96 /* ForjaTests.xctest */,
 				65694CF0302A3A1F009B9A96 /* ForjaUITests.xctest */,
+				65694D22302AB90E009B9A96 /* ForjaiOS.app */,
+				65694D2E302AB915009B9A96 /* ForjaiOSTests.xctest */,
+				65694D38302AB915009B9A96 /* ForjaiOSUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		65694D0D302A3BBF009B9A96 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				654BDEBD302BBC9500650E43 /* forja.html */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +241,74 @@
 			productReference = 65694CF0302A3A1F009B9A96 /* ForjaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		65694D21302AB90E009B9A96 /* ForjaiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65694D46302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOS" */;
+			buildPhases = (
+				65694D1E302AB90E009B9A96 /* Sources */,
+				65694D1F302AB90E009B9A96 /* Frameworks */,
+				65694D20302AB90E009B9A96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				65694D23302AB90E009B9A96 /* ForjaiOS */,
+			);
+			name = ForjaiOS;
+			packageProductDependencies = (
+			);
+			productName = ForjaiOS;
+			productReference = 65694D22302AB90E009B9A96 /* ForjaiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		65694D2D302AB915009B9A96 /* ForjaiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65694D47302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOSTests" */;
+			buildPhases = (
+				65694D2A302AB915009B9A96 /* Sources */,
+				65694D2B302AB915009B9A96 /* Frameworks */,
+				65694D2C302AB915009B9A96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65694D30302AB915009B9A96 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				65694D31302AB915009B9A96 /* ForjaiOSTests */,
+			);
+			name = ForjaiOSTests;
+			packageProductDependencies = (
+			);
+			productName = ForjaiOSTests;
+			productReference = 65694D2E302AB915009B9A96 /* ForjaiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		65694D37302AB915009B9A96 /* ForjaiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65694D48302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOSUITests" */;
+			buildPhases = (
+				65694D34302AB915009B9A96 /* Sources */,
+				65694D35302AB915009B9A96 /* Frameworks */,
+				65694D36302AB915009B9A96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65694D3A302AB915009B9A96 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				65694D3B302AB915009B9A96 /* ForjaiOSUITests */,
+			);
+			name = ForjaiOSUITests;
+			packageProductDependencies = (
+			);
+			productName = ForjaiOSUITests;
+			productReference = 65694D38302AB915009B9A96 /* ForjaiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +330,17 @@
 						CreatedOnToolsVersion = 16.4;
 						TestTargetID = 65694CD7302A3A15009B9A96;
 					};
+					65694D21302AB90E009B9A96 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					65694D2D302AB915009B9A96 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 65694D21302AB90E009B9A96;
+					};
+					65694D37302AB915009B9A96 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 65694D21302AB90E009B9A96;
+					};
 				};
 			};
 			buildConfigurationList = 65694CD3302A3A15009B9A96 /* Build configuration list for PBXProject "Forja" */;
@@ -203,6 +360,9 @@
 				65694CD7302A3A15009B9A96 /* Forja */,
 				65694CE5302A3A1E009B9A96 /* ForjaTests */,
 				65694CEF302A3A1F009B9A96 /* ForjaUITests */,
+				65694D21302AB90E009B9A96 /* ForjaiOS */,
+				65694D2D302AB915009B9A96 /* ForjaiOSTests */,
+				65694D37302AB915009B9A96 /* ForjaiOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -212,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654BDEBF302BBC9500650E43 /* forja.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +390,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65694D20302AB90E009B9A96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				654BDEBE302BBC9500650E43 /* forja.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D2C302AB915009B9A96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D36302AB915009B9A96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -236,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654BDEBB302BAC1C00650E43 /* StorageBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +431,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		65694CEC302A3A1F009B9A96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D1E302AB90E009B9A96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				654BDEBA302BAC1C00650E43 /* StorageBridge.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D2A302AB915009B9A96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65694D34302AB915009B9A96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,6 +471,16 @@
 			isa = PBXTargetDependency;
 			target = 65694CD7302A3A15009B9A96 /* Forja */;
 			targetProxy = 65694CF1302A3A1F009B9A96 /* PBXContainerItemProxy */;
+		};
+		65694D30302AB915009B9A96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65694D21302AB90E009B9A96 /* ForjaiOS */;
+			targetProxy = 65694D2F302AB915009B9A96 /* PBXContainerItemProxy */;
+		};
+		65694D3A302AB915009B9A96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65694D21302AB90E009B9A96 /* ForjaiOS */;
+			targetProxy = 65694D39302AB915009B9A96 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,6 +609,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Forja/Forja.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -403,6 +620,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = calurpen.Forja;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Forja/Forja.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -428,6 +647,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = calurpen.Forja;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,6 +721,141 @@
 			};
 			name = Release;
 		};
+		65694D40302AB915009B9A96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65694D41302AB915009B9A96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65694D42302AB915009B9A96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForjaiOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ForjaiOS";
+			};
+			name = Debug;
+		};
+		65694D43302AB915009B9A96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForjaiOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ForjaiOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65694D44302AB915009B9A96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ForjaiOS;
+			};
+			name = Debug;
+		};
+		65694D45302AB915009B9A96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = calurpen.ForjaiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ForjaiOS;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -536,6 +891,33 @@
 			buildConfigurations = (
 				65694D01302A3A1F009B9A96 /* Debug */,
 				65694D02302A3A1F009B9A96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65694D46302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65694D40302AB915009B9A96 /* Debug */,
+				65694D41302AB915009B9A96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65694D47302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65694D42302AB915009B9A96 /* Debug */,
+				65694D43302AB915009B9A96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65694D48302AB915009B9A96 /* Build configuration list for PBXNativeTarget "ForjaiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65694D44302AB915009B9A96 /* Debug */,
+				65694D45302AB915009B9A96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
